@@ -21,7 +21,8 @@ export const TrackedSection = ({
 
   useEffect(() => {
     registerSection({ id: sectionId, title: tocTitle });
-  }, [registerSection, sectionId, tocTitle]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({

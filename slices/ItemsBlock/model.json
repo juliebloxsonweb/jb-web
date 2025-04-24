@@ -10,7 +10,79 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "publication_text": {
+          "type": "Text",
+          "config": {
+            "label": "publication text",
+            "placeholder": ""
+          }
+        },
+        "publications": {
+          "type": "Group",
+          "config": {
+            "label": "publications",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "text",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "events_title": {
+          "type": "Text",
+          "config": {
+            "label": "events title",
+            "placeholder": ""
+          }
+        },
+        "events": {
+          "type": "Group",
+          "config": {
+            "label": "events",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "text",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "awards_text": {
+          "type": "Text",
+          "config": {
+            "label": "awards text",
+            "placeholder": ""
+          }
+        },
+        "awards": {
+          "type": "Group",
+          "config": {
+            "label": "awards",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "text",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

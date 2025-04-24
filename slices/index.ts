@@ -4,5 +4,4 @@ import dynamic from "next/dynamic";
 
 export const components = {
   items_block: dynamic(() => import("./ItemsBlock")),
-  publications: dynamic(() => import("./Publications")),
 };

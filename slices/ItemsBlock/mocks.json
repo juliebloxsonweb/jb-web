@@ -2,7 +2,77 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"publication_text": {
+				"__TYPE__": "FieldContent",
+				"value": "consist",
+				"type": "Text"
+			},
+			"publications": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "stove",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"events_title": {
+				"__TYPE__": "FieldContent",
+				"value": "mighty",
+				"type": "Text"
+			},
+			"events": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "hurried",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"awards_text": {
+				"__TYPE__": "FieldContent",
+				"value": "rays",
+				"type": "Text"
+			},
+			"awards": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "difficulty",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]

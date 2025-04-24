@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutDocumentDataSlicesSlice = ItemsBlockSlice | PublicationsSlice;
+type AboutDocumentDataSlicesSlice = ItemsBlockSlice;
 
 /**
  * Content for About documents
@@ -139,6 +139,118 @@ export type PublicationsDocument<Lang extends string = string> =
 export type AllDocumentTypes = AboutDocument | PublicationsDocument;
 
 /**
+ * Item in *ItemsBlock → Default → Primary → publications*
+ */
+export interface ItemsBlockSliceDefaultPrimaryPublicationsItem {
+  /**
+   * text field in *ItemsBlock → Default → Primary → publications*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.publications[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *ItemsBlock → Default → Primary → events*
+ */
+export interface ItemsBlockSliceDefaultPrimaryEventsItem {
+  /**
+   * text field in *ItemsBlock → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.events[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *ItemsBlock → Default → Primary → awards*
+ */
+export interface ItemsBlockSliceDefaultPrimaryAwardsItem {
+  /**
+   * text field in *ItemsBlock → Default → Primary → awards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.awards[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ItemsBlock → Default → Primary*
+ */
+export interface ItemsBlockSliceDefaultPrimary {
+  /**
+   * publication text field in *ItemsBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.publication_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  publication_text: prismic.KeyTextField;
+
+  /**
+   * publications field in *ItemsBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.publications[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  publications: prismic.GroupField<
+    Simplify<ItemsBlockSliceDefaultPrimaryPublicationsItem>
+  >;
+
+  /**
+   * events title field in *ItemsBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.events_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  events_title: prismic.KeyTextField;
+
+  /**
+   * events field in *ItemsBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.events[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  events: prismic.GroupField<Simplify<ItemsBlockSliceDefaultPrimaryEventsItem>>;
+
+  /**
+   * awards text field in *ItemsBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.awards_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  awards_text: prismic.KeyTextField;
+
+  /**
+   * awards field in *ItemsBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: items_block.default.primary.awards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  awards: prismic.GroupField<Simplify<ItemsBlockSliceDefaultPrimaryAwardsItem>>;
+}
+
+/**
  * Default variation for ItemsBlock Slice
  *
  * - **API ID**: `default`
@@ -147,7 +259,7 @@ export type AllDocumentTypes = AboutDocument | PublicationsDocument;
  */
 export type ItemsBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<ItemsBlockSliceDefaultPrimary>,
   never
 >;
 
@@ -166,76 +278,6 @@ type ItemsBlockSliceVariation = ItemsBlockSliceDefault;
 export type ItemsBlockSlice = prismic.SharedSlice<
   "items_block",
   ItemsBlockSliceVariation
->;
-
-/**
- * Item in *Publications → Default → Primary → items*
- */
-export interface PublicationsSliceDefaultPrimaryItemsItem {
-  /**
-   * text field in *Publications → Default → Primary → items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: publications.default.primary.items[].text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  text: prismic.KeyTextField;
-}
-
-/**
- * Primary content in *Publications → Default → Primary*
- */
-export interface PublicationsSliceDefaultPrimary {
-  /**
-   * title field in *Publications → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: publications.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * items field in *Publications → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: publications.default.primary.items[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  items: prismic.GroupField<Simplify<PublicationsSliceDefaultPrimaryItemsItem>>;
-}
-
-/**
- * Default variation for Publications Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type PublicationsSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<PublicationsSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *Publications*
- */
-type PublicationsSliceVariation = PublicationsSliceDefault;
-
-/**
- * Publications Shared Slice
- *
- * - **API ID**: `publications`
- * - **Description**: Publications
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type PublicationsSlice = prismic.SharedSlice<
-  "publications",
-  PublicationsSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -267,13 +309,12 @@ declare module "@prismicio/client" {
       PublicationsDocumentDataPublicationsItem,
       AllDocumentTypes,
       ItemsBlockSlice,
+      ItemsBlockSliceDefaultPrimaryPublicationsItem,
+      ItemsBlockSliceDefaultPrimaryEventsItem,
+      ItemsBlockSliceDefaultPrimaryAwardsItem,
+      ItemsBlockSliceDefaultPrimary,
       ItemsBlockSliceVariation,
       ItemsBlockSliceDefault,
-      PublicationsSlice,
-      PublicationsSliceDefaultPrimaryItemsItem,
-      PublicationsSliceDefaultPrimary,
-      PublicationsSliceVariation,
-      PublicationsSliceDefault,
     };
   }
 }

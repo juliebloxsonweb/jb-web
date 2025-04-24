@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import { ItemsBlockClient } from "@/components/ItemsBlockClient";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { FC } from "react";
-
 
 /**
  * Props for `ItemsBlock`.
@@ -20,7 +19,14 @@ const ItemsBlock: FC<ItemsBlockProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="py-32"
     >
-     <ItemsBlockClient />
+      <ItemsBlockClient
+        publicationText={slice.primary.publication_text}
+        publicationData={slice.primary.publications}
+        eventText={slice.primary.events_title}
+        eventData={slice.primary.events}
+        awardText={slice.primary.awards_text}
+        awardData={slice.primary.awards}
+      />
     </section>
   );
 };
