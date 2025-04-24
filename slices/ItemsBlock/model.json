@@ -1,0 +1,16 @@
+{
+  "id": "items_block",
+  "type": "SharedSlice",
+  "name": "ItemsBlock",
+  "description": "ItemsBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}
