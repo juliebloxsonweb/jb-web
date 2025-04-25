@@ -17,7 +17,7 @@ const ItemsBlock: FC<ItemsBlockProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-32"
+      className="py-16"
     >
       <ItemsBlockClient
         publicationText={slice.primary.publication_text}

@@ -40,7 +40,7 @@ export const Navbar = () => {
               <div className="" key={index}>
                 <Link
                   href={item.path}
-                  className={`text-black flex items-center space-x-2 bg-[#f6f6f6] px-3 py-1 rounded-full transition-colors
+                  className={`text-black flex items-center space-x-2 bg-gray px-3 py-1 rounded-full transition-colors
                     ${isActive(item.path) && "font-bold border border-black"}  
                     `}
                 >
@@ -57,7 +57,7 @@ export const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="bg-[#f6f6f6] border border-black px-3 py-1 rounded-full"
+            className="bg-gray border border-black px-3 py-1 rounded-full"
           >
             <span className="font-extrabold text-xl">Dr. Julie Bloxson</span>
           </Link>
@@ -68,7 +68,7 @@ export const Navbar = () => {
               <div className="" key={index}>
                 <Link
                   href={item.path}
-                  className={`text-black flex items-center space-x-2 bg-[#f6f6f6] px-3 py-1 rounded-full transition-colors
+                  className={`text-black flex items-center space-x-2 bg-gray px-3 py-1 rounded-full transition-colors
                     ${isActive(item.path) && " font-bold"}  
                     `}
                 >

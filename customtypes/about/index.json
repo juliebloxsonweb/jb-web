@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "stats_block": {
+              "type": "SharedSlice"
+            },
             "items_block": {
               "type": "SharedSlice"
             }

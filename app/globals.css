@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #020001;
   --green: #27b058;
+  --gray: #f6f6f6;
 }
 
 @utility container {
@@ -16,6 +17,7 @@
   --color-black: var(--foreground);
   --color-blue: var(--blue);
   --color-green: var(--green);
+  --color-gray: var(--gray);
   --font-plus: var(--font-plus-carmen);
 }
 

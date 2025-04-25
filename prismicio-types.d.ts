@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutDocumentDataSlicesSlice = ItemsBlockSlice;
+type AboutDocumentDataSlicesSlice = StatsBlockSlice | ItemsBlockSlice;
 
 /**
  * Content for About documents
@@ -76,67 +76,7 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
-/**
- * Item in *Publications → publications*
- */
-export interface PublicationsDocumentDataPublicationsItem {
-  /**
-   * reference field in *Publications → publications*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: publications.publications[].reference
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  reference: prismic.KeyTextField;
-}
-
-/**
- * Content for Publications documents
- */
-interface PublicationsDocumentData {
-  /**
-   * title field in *Publications*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: publications.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * publications field in *Publications*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: publications.publications[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  publications: prismic.GroupField<
-    Simplify<PublicationsDocumentDataPublicationsItem>
-  >;
-}
-
-/**
- * Publications document from Prismic
- *
- * - **API ID**: `publications`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type PublicationsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<PublicationsDocumentData>,
-    "publications",
-    Lang
-  >;
-
-export type AllDocumentTypes = AboutDocument | PublicationsDocument;
+export type AllDocumentTypes = AboutDocument;
 
 /**
  * Item in *ItemsBlock → Default → Primary → publications*
@@ -280,6 +220,76 @@ export type ItemsBlockSlice = prismic.SharedSlice<
   ItemsBlockSliceVariation
 >;
 
+/**
+ * Item in *StatsBlock → Default → Primary → stats*
+ */
+export interface StatsBlockSliceDefaultPrimaryStatsItem {
+  /**
+   * number field in *StatsBlock → Default → Primary → stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats_block.default.primary.stats[].number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  number: prismic.KeyTextField;
+
+  /**
+   * text field in *StatsBlock → Default → Primary → stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats_block.default.primary.stats[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *StatsBlock → Default → Primary*
+ */
+export interface StatsBlockSliceDefaultPrimary {
+  /**
+   * stats field in *StatsBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats_block.default.primary.stats[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  stats: prismic.GroupField<Simplify<StatsBlockSliceDefaultPrimaryStatsItem>>;
+}
+
+/**
+ * Default variation for StatsBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StatsBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<StatsBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *StatsBlock*
+ */
+type StatsBlockSliceVariation = StatsBlockSliceDefault;
+
+/**
+ * StatsBlock Shared Slice
+ *
+ * - **API ID**: `stats_block`
+ * - **Description**: StatsBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StatsBlockSlice = prismic.SharedSlice<
+  "stats_block",
+  StatsBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -304,9 +314,6 @@ declare module "@prismicio/client" {
       AboutDocument,
       AboutDocumentData,
       AboutDocumentDataSlicesSlice,
-      PublicationsDocument,
-      PublicationsDocumentData,
-      PublicationsDocumentDataPublicationsItem,
       AllDocumentTypes,
       ItemsBlockSlice,
       ItemsBlockSliceDefaultPrimaryPublicationsItem,
@@ -315,6 +322,11 @@ declare module "@prismicio/client" {
       ItemsBlockSliceDefaultPrimary,
       ItemsBlockSliceVariation,
       ItemsBlockSliceDefault,
+      StatsBlockSlice,
+      StatsBlockSliceDefaultPrimaryStatsItem,
+      StatsBlockSliceDefaultPrimary,
+      StatsBlockSliceVariation,
+      StatsBlockSliceDefault,
     };
   }
 }
