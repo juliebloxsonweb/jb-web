@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "about_me_block": {
+              "type": "SharedSlice"
+            },
+            "about_hero_block": {
+              "type": "SharedSlice"
+            },
             "stats_block": {
               "type": "SharedSlice"
             },

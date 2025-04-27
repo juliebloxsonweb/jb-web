@@ -4,7 +4,11 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutDocumentDataSlicesSlice = StatsBlockSlice | ItemsBlockSlice;
+type AboutDocumentDataSlicesSlice =
+  | AboutMeBlockSlice
+  | AboutHeroBlockSlice
+  | StatsBlockSlice
+  | ItemsBlockSlice;
 
 /**
  * Content for About documents
@@ -77,6 +81,181 @@ export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
 export type AllDocumentTypes = AboutDocument;
+
+/**
+ * Primary content in *AboutHeroBlock → Default → Primary*
+ */
+export interface AboutHeroBlockSliceDefaultPrimary {
+  /**
+   * title field in *AboutHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_hero_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * content field in *AboutHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_hero_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * image field in *AboutHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_hero_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * position field in *AboutHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_hero_block.default.primary.position
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  position: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for AboutHeroBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHeroBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutHeroBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutHeroBlock*
+ */
+type AboutHeroBlockSliceVariation = AboutHeroBlockSliceDefault;
+
+/**
+ * AboutHeroBlock Shared Slice
+ *
+ * - **API ID**: `about_hero_block`
+ * - **Description**: AboutHeroBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHeroBlockSlice = prismic.SharedSlice<
+  "about_hero_block",
+  AboutHeroBlockSliceVariation
+>;
+
+/**
+ * Item in *AboutMeBlock → Default → Primary → stats*
+ */
+export interface AboutMeBlockSliceDefaultPrimaryStatsItem {
+  /**
+   * number field in *AboutMeBlock → Default → Primary → stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.stats[].number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  number: prismic.KeyTextField;
+
+  /**
+   * text field in *AboutMeBlock → Default → Primary → stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.stats[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *AboutMeBlock → Default → Primary*
+ */
+export interface AboutMeBlockSliceDefaultPrimary {
+  /**
+   * title field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * image field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * content field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * stats field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.stats[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  stats: prismic.GroupField<Simplify<AboutMeBlockSliceDefaultPrimaryStatsItem>>;
+}
+
+/**
+ * Default variation for AboutMeBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutMeBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutMeBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutMeBlock*
+ */
+type AboutMeBlockSliceVariation = AboutMeBlockSliceDefault;
+
+/**
+ * AboutMeBlock Shared Slice
+ *
+ * - **API ID**: `about_me_block`
+ * - **Description**: AboutMeBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutMeBlockSlice = prismic.SharedSlice<
+  "about_me_block",
+  AboutMeBlockSliceVariation
+>;
 
 /**
  * Item in *ItemsBlock → Default → Primary → publications*
@@ -315,6 +494,15 @@ declare module "@prismicio/client" {
       AboutDocumentData,
       AboutDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AboutHeroBlockSlice,
+      AboutHeroBlockSliceDefaultPrimary,
+      AboutHeroBlockSliceVariation,
+      AboutHeroBlockSliceDefault,
+      AboutMeBlockSlice,
+      AboutMeBlockSliceDefaultPrimaryStatsItem,
+      AboutMeBlockSliceDefaultPrimary,
+      AboutMeBlockSliceVariation,
+      AboutMeBlockSliceDefault,
       ItemsBlockSlice,
       ItemsBlockSliceDefaultPrimaryPublicationsItem,
       ItemsBlockSliceDefaultPrimaryEventsItem,

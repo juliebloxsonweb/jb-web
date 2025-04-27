@@ -48,10 +48,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${carmen.variable} antialiased`}
-    >
+    <html lang="en" className={`${carmen.variable} antialiased`}>
       <body
-      className="font-caros min-h-screen overflow-x-hidden m-0 p-0 flex flex-col bg-white text-black"
+        className="font-caros min-h-screen overflow-x-hidden m-0 p-0 flex flex-col bg-white text-black"
         suppressHydrationWarning={true}
       >
         <MenuProvider>

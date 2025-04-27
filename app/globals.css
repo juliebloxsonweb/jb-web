@@ -5,6 +5,7 @@
   --foreground: #020001;
   --green: #27b058;
   --gray: #f6f6f6;
+  /* --gray: #fffbf5; */
 }
 
 @utility container {
@@ -22,8 +23,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* background: var(--background); */
+  /* color: var(--foreground); */
   font-family: "Carmen Sans", sans-serif;
   scroll-behavior: smooth;
 }

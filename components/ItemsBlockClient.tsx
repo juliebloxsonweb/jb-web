@@ -35,7 +35,6 @@ export function ItemsBlockClient({
           <TableOfContents />
           <article className="min-h-screen mx-auto max-w-[100ch] w-[80vw] space-y-16">
             <TrackedSection sectionId={0} tocTitle="Publications" isFirst>
-              {/* <PublicationBlock /> */}
               <h3 className="text-4xl leading-[1.25em] mb-4 font-bold">
                 {publicationText}
               </h3>
