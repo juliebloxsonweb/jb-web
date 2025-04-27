@@ -34,6 +34,27 @@
             "placeholder": ""
           }
         },
+        "position": {
+          "type": "Text",
+          "config": {
+            "label": "position",
+            "placeholder": ""
+          }
+        },
+        "department": {
+          "type": "Text",
+          "config": {
+            "label": "department",
+            "placeholder": ""
+          }
+        },
+        "location": {
+          "type": "Text",
+          "config": {
+            "label": "location",
+            "placeholder": ""
+          }
+        },
         "stats": {
           "type": "Group",
           "config": {

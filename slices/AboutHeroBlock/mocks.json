@@ -40,6 +40,19 @@
 				"__TYPE__": "FieldContent",
 				"value": "fast",
 				"type": "Text"
+			},
+			"btn_text": {
+				"__TYPE__": "FieldContent",
+				"value": "honor",
+				"type": "Text"
+			},
+			"btn_link": {
+				"__TYPE__": "LinkContent",
+				"key": "3c725a4d-c4ba-4e9b-be83-4733b8d2d9cc",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
 			}
 		},
 		"items": []

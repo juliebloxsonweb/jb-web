@@ -125,6 +125,32 @@ export interface AboutHeroBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   position: prismic.KeyTextField;
+
+  /**
+   * btn text field in *AboutHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_hero_block.default.primary.btn_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  btn_text: prismic.KeyTextField;
+
+  /**
+   * btn link field in *AboutHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_hero_block.default.primary.btn_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  btn_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**
@@ -215,6 +241,36 @@ export interface AboutMeBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   content: prismic.KeyTextField;
+
+  /**
+   * position field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.position
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  position: prismic.KeyTextField;
+
+  /**
+   * department field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.department
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  department: prismic.KeyTextField;
+
+  /**
+   * location field in *AboutMeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me_block.default.primary.location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
 
   /**
    * stats field in *AboutMeBlock → Default → Primary*

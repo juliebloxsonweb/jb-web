@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${carmen.variable} antialiased`}>
       <body
-        className="font-caros min-h-screen overflow-x-hidden m-0 p-0 flex flex-col bg-white text-black"
+        className="font-caros min-h-screen overflow-x-hidden m-0 p-0 flex flex-col bg-[#fffbf5] text-black"
         suppressHydrationWarning={true}
       >
         <MenuProvider>

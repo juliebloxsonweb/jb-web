@@ -15,6 +15,7 @@ export function StatsCounter({ count, text }: StatsProps) {
     bounce: 0,
     duration: 1000,
   });
+  
 
   springStatsCount.on("change", (value) => {
     setDisplayStats(Math.round(value));
@@ -29,7 +30,7 @@ export function StatsCounter({ count, text }: StatsProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="flex flex-col justify-center items-center gap-y-2"
+      className="flex flex-col justify-center items-center"
     >
       <span className="flex items-center">
         <span className="text-7xl font-extrabold">{displayStats}</span>
@@ -37,7 +38,7 @@ export function StatsCounter({ count, text }: StatsProps) {
         <Plus className="size-12 text-green" />
       </span>
 
-      <span className="text-lg">{text}</span>
+      <span className="text-lg text-gray-500">{text}</span>
     </motion.div>
   );
 }

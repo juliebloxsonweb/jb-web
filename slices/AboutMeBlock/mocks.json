@@ -61,6 +61,21 @@
 						]
 					}
 				]
+			},
+			"position": {
+				"__TYPE__": "FieldContent",
+				"value": "seems",
+				"type": "Text"
+			},
+			"department": {
+				"__TYPE__": "FieldContent",
+				"value": "being",
+				"type": "Text"
+			},
+			"location": {
+				"__TYPE__": "FieldContent",
+				"value": "plastic",
+				"type": "Text"
 			}
 		},
 		"items": []
