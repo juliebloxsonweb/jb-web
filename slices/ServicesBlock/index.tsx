@@ -42,12 +42,9 @@ const ServicesBlock: FC<ServicesBlockProps> = ({ slice }) => {
             >
               <div className="bg-black/10 w-full h-full absolute z-[1] inset-0 bg-gradient-to-b from-transparent from-20% to-black lg:from-30%"></div>
               <div className="absolute top-2 right-2">
-                <PrismicNextLink
-                  field={item.btn_link}
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-green text-white border border-black shrink-0 cursor-pointer"
-                >
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green text-white border border-black shrink-0 cursor-pointer">
                   <ArrowUpRight className="w-8 h-8 min-w-min min-h-min" />
-                </PrismicNextLink>
+                </div>
               </div>
 
               <div className="flex flex-col h-full justify-end text-white z-[2] px-4 xl:px-8 py-4">
