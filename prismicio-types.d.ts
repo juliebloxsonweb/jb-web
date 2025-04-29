@@ -117,14 +117,14 @@ export interface AboutHeroBlockSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * position field in *AboutHeroBlock → Default → Primary*
+   * name field in *AboutHeroBlock → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: about_hero_block.default.primary.position
+   * - **API ID Path**: about_hero_block.default.primary.name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  position: prismic.KeyTextField;
+  name: prismic.KeyTextField;
 
   /**
    * btn text field in *AboutHeroBlock → Default → Primary*

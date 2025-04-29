@@ -4,7 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import { StatsCounter } from "@/components/StatsCounter";
 import { PrismicNextImage } from "@prismicio/next";
 import { staticBlurDataUrl } from "@/utils/staticBlurUrl";
-import { Briefcase, LocateIcon, MapPin, Presentation } from "lucide-react";
+import { Briefcase, Hammer, LocateIcon, MapPin, Presentation } from "lucide-react";
 
 /**
  * Props for `AboutMeBlock`.
@@ -60,7 +60,7 @@ const AboutMeBlock: FC<AboutMeBlockProps> = ({ slice }) => {
               {/* department */}
               <div className="flex items-center gap-x-4">
                 <div className="w-8 h-8 flex items-center justify-center rounded-full bg-green text-white border border-black shrink-0">
-                  <Presentation className="w-4 h-4 min-w-min min-h-min" />
+                  <Hammer className="w-4 h-4 min-w-min min-h-min" />
                 </div>
                 <span className="text-[1.125rem]">
                   {slice.primary.department}

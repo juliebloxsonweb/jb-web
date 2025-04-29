@@ -34,10 +34,10 @@
             "thumbnails": []
           }
         },
-        "position": {
+        "name": {
           "type": "Text",
           "config": {
-            "label": "position",
+            "label": "name",
             "placeholder": ""
           }
         },
