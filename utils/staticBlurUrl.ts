@@ -6,7 +6,7 @@ export function staticBlurDataUrl() {
         </filter>
 
         <rect preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%' 
-        stroke-width="3" stroke="#7b9fa6" fill="#fffbf5" />  
+        stroke-width="3" stroke="#7b9fa6" fill="#eef4b6" />  
     </svg>
 `;
 

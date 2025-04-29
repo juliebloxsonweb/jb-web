@@ -27,7 +27,7 @@ const AboutHeroBlock: FC<AboutHeroBlockProps> = ({ slice }) => {
         <div className=" grid md:grid-cols-2 gap-y-8 md:gap-x-8">
           <div className="h-full w-full min-h-[500px] bg-[#ebf96d] rounded-3xl px-4 py-4 border border-black order-2 lg:order-1">
             <div className="flex flex-col h-full justify-center items-center text-center">
-              <span className="text-xl capitalize">{slice.primary.title}</span>
+              <span className="text-lg uppercase">{slice.primary.title}</span>
               <h1 className="text-4xl lg:text-5xl xl:text-7xl font-medium mb-8 lg:mb-16">
                 {slice.primary.content}
               </h1>

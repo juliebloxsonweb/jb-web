@@ -80,7 +80,68 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
-export type AllDocumentTypes = AboutDocument;
+type HomeDocumentDataSlicesSlice = AboutHeroBlockSlice | ServicesBlockSlice;
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
+   * Meta Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
+export type AllDocumentTypes = AboutDocument | HomeDocument;
 
 /**
  * Primary content in *AboutHeroBlock → Default → Primary*
@@ -456,6 +517,134 @@ export type ItemsBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ServicesBlock → Default → Primary → services*
+ */
+export interface ServicesBlockSliceDefaultPrimaryServicesItem {
+  /**
+   * bg image field in *ServicesBlock → Default → Primary → services*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[].bg_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  bg_image: prismic.ImageField<never>;
+
+  /**
+   * icon field in *ServicesBlock → Default → Primary → services*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * title field in *ServicesBlock → Default → Primary → services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * content field in *ServicesBlock → Default → Primary → services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[].content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * btn text field in *ServicesBlock → Default → Primary → services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[].btn_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  btn_text: prismic.KeyTextField;
+
+  /**
+   * btn link field in *ServicesBlock → Default → Primary → services*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[].btn_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  btn_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *ServicesBlock → Default → Primary*
+ */
+export interface ServicesBlockSliceDefaultPrimary {
+  /**
+   * title field in *ServicesBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * services field in *ServicesBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_block.default.primary.services[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services: prismic.GroupField<
+    Simplify<ServicesBlockSliceDefaultPrimaryServicesItem>
+  >;
+}
+
+/**
+ * Default variation for ServicesBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServicesBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServicesBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServicesBlock*
+ */
+type ServicesBlockSliceVariation = ServicesBlockSliceDefault;
+
+/**
+ * ServicesBlock Shared Slice
+ *
+ * - **API ID**: `services_block`
+ * - **Description**: ServicesBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServicesBlockSlice = prismic.SharedSlice<
+  "services_block",
+  ServicesBlockSliceVariation
+>;
+
+/**
  * Item in *StatsBlock → Default → Primary → stats*
  */
 export interface StatsBlockSliceDefaultPrimaryStatsItem {
@@ -549,6 +738,9 @@ declare module "@prismicio/client" {
       AboutDocument,
       AboutDocumentData,
       AboutDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutHeroBlockSlice,
       AboutHeroBlockSliceDefaultPrimary,
@@ -566,6 +758,11 @@ declare module "@prismicio/client" {
       ItemsBlockSliceDefaultPrimary,
       ItemsBlockSliceVariation,
       ItemsBlockSliceDefault,
+      ServicesBlockSlice,
+      ServicesBlockSliceDefaultPrimaryServicesItem,
+      ServicesBlockSliceDefaultPrimary,
+      ServicesBlockSliceVariation,
+      ServicesBlockSliceDefault,
       StatsBlockSlice,
       StatsBlockSliceDefaultPrimaryStatsItem,
       StatsBlockSliceDefaultPrimary,

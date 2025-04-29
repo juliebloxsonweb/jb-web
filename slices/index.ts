@@ -6,5 +6,6 @@ export const components = {
   about_hero_block: dynamic(() => import("./AboutHeroBlock")),
   about_me_block: dynamic(() => import("./AboutMeBlock")),
   items_block: dynamic(() => import("./ItemsBlock")),
+  services_block: dynamic(() => import("./ServicesBlock")),
   stats_block: dynamic(() => import("./StatsBlock")),
 };
