@@ -80,7 +80,10 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
-type HomeDocumentDataSlicesSlice = AboutHeroBlockSlice | ServicesBlockSlice;
+type HomeDocumentDataSlicesSlice =
+  | HomeStudentsBlockSlice
+  | AboutHeroBlockSlice
+  | ServicesBlockSlice;
 
 /**
  * Content for Home documents
@@ -141,7 +144,85 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = AboutDocument | HomeDocument;
+type StudentsDocumentDataSlicesSlice =
+  | GalleryBlockSlice
+  | StudentHeroBlockSlice;
+
+/**
+ * Content for Students documents
+ */
+interface StudentsDocumentData {
+  /**
+   * Slice Zone field in *Students*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: students.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<StudentsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Students*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: students.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Students*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: students.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Students*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: students.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * keyword field in *Students*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: students.keyword
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  keyword: prismic.KeyTextField;
+}
+
+/**
+ * Students document from Prismic
+ *
+ * - **API ID**: `students`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StudentsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<StudentsDocumentData>,
+    "students",
+    Lang
+  >;
+
+export type AllDocumentTypes = AboutDocument | HomeDocument | StudentsDocument;
 
 /**
  * Primary content in *AboutHeroBlock → Default → Primary*
@@ -372,6 +453,215 @@ type AboutMeBlockSliceVariation = AboutMeBlockSliceDefault;
 export type AboutMeBlockSlice = prismic.SharedSlice<
   "about_me_block",
   AboutMeBlockSliceVariation
+>;
+
+/**
+ * Item in *GalleryBlock → Default → Primary → images*
+ */
+export interface GalleryBlockSliceDefaultPrimaryImagesItem {
+  /**
+   * image field in *GalleryBlock → Default → Primary → images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_block.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *GalleryBlock → Default → Primary*
+ */
+export interface GalleryBlockSliceDefaultPrimary {
+  /**
+   * title field in *GalleryBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * images field in *GalleryBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_block.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<GalleryBlockSliceDefaultPrimaryImagesItem>
+  >;
+}
+
+/**
+ * Default variation for GalleryBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GalleryBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GalleryBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GalleryBlock*
+ */
+type GalleryBlockSliceVariation = GalleryBlockSliceDefault;
+
+/**
+ * GalleryBlock Shared Slice
+ *
+ * - **API ID**: `gallery_block`
+ * - **Description**: GalleryBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GalleryBlockSlice = prismic.SharedSlice<
+  "gallery_block",
+  GalleryBlockSliceVariation
+>;
+
+/**
+ * Primary content in *HeroBlock → Default → Primary*
+ */
+export interface HeroBlockSliceDefaultPrimary {
+  /**
+   * title field in *HeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * content field in *HeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for HeroBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeroBlock*
+ */
+type HeroBlockSliceVariation = HeroBlockSliceDefault;
+
+/**
+ * HeroBlock Shared Slice
+ *
+ * - **API ID**: `hero_block`
+ * - **Description**: HeroBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroBlockSlice = prismic.SharedSlice<
+  "hero_block",
+  HeroBlockSliceVariation
+>;
+
+/**
+ * Item in *HomeStudentsBlock → Default → Primary → students*
+ */
+export interface HomeStudentsBlockSliceDefaultPrimaryStudentsItem {
+  /**
+   * name field in *HomeStudentsBlock → Default → Primary → students*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_students_block.default.primary.students[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * thesis field in *HomeStudentsBlock → Default → Primary → students*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_students_block.default.primary.students[].thesis
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  thesis: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *HomeStudentsBlock → Default → Primary*
+ */
+export interface HomeStudentsBlockSliceDefaultPrimary {
+  /**
+   * title field in *HomeStudentsBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_students_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * students field in *HomeStudentsBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_students_block.default.primary.students[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  students: prismic.GroupField<
+    Simplify<HomeStudentsBlockSliceDefaultPrimaryStudentsItem>
+  >;
+}
+
+/**
+ * Default variation for HomeStudentsBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeStudentsBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeStudentsBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeStudentsBlock*
+ */
+type HomeStudentsBlockSliceVariation = HomeStudentsBlockSliceDefault;
+
+/**
+ * HomeStudentsBlock Shared Slice
+ *
+ * - **API ID**: `home_students_block`
+ * - **Description**: HomeStudentsBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeStudentsBlockSlice = prismic.SharedSlice<
+  "home_students_block",
+  HomeStudentsBlockSliceVariation
 >;
 
 /**
@@ -714,6 +1004,124 @@ export type StatsBlockSlice = prismic.SharedSlice<
   StatsBlockSliceVariation
 >;
 
+/**
+ * Item in *StudentHeroBlock → Default → Primary → images*
+ */
+export interface StudentHeroBlockSliceDefaultPrimaryImagesItem {
+  /**
+   * image field in *StudentHeroBlock → Default → Primary → images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *StudentHeroBlock → Default → Primary*
+ */
+export interface StudentHeroBlockSliceDefaultPrimary {
+  /**
+   * title field in *StudentHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * image field in *StudentHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * content field in *StudentHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * images field in *StudentHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<StudentHeroBlockSliceDefaultPrimaryImagesItem>
+  >;
+
+  /**
+   * btn text field in *StudentHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.btn_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  btn_text: prismic.KeyTextField;
+
+  /**
+   * btn link field in *StudentHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: student_hero_block.default.primary.btn_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  btn_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Default variation for StudentHeroBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StudentHeroBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<StudentHeroBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *StudentHeroBlock*
+ */
+type StudentHeroBlockSliceVariation = StudentHeroBlockSliceDefault;
+
+/**
+ * StudentHeroBlock Shared Slice
+ *
+ * - **API ID**: `student_hero_block`
+ * - **Description**: StudentHeroBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StudentHeroBlockSlice = prismic.SharedSlice<
+  "student_hero_block",
+  StudentHeroBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -741,6 +1149,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      StudentsDocument,
+      StudentsDocumentData,
+      StudentsDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutHeroBlockSlice,
       AboutHeroBlockSliceDefaultPrimary,
@@ -751,6 +1162,20 @@ declare module "@prismicio/client" {
       AboutMeBlockSliceDefaultPrimary,
       AboutMeBlockSliceVariation,
       AboutMeBlockSliceDefault,
+      GalleryBlockSlice,
+      GalleryBlockSliceDefaultPrimaryImagesItem,
+      GalleryBlockSliceDefaultPrimary,
+      GalleryBlockSliceVariation,
+      GalleryBlockSliceDefault,
+      HeroBlockSlice,
+      HeroBlockSliceDefaultPrimary,
+      HeroBlockSliceVariation,
+      HeroBlockSliceDefault,
+      HomeStudentsBlockSlice,
+      HomeStudentsBlockSliceDefaultPrimaryStudentsItem,
+      HomeStudentsBlockSliceDefaultPrimary,
+      HomeStudentsBlockSliceVariation,
+      HomeStudentsBlockSliceDefault,
       ItemsBlockSlice,
       ItemsBlockSliceDefaultPrimaryPublicationsItem,
       ItemsBlockSliceDefaultPrimaryEventsItem,
@@ -768,6 +1193,11 @@ declare module "@prismicio/client" {
       StatsBlockSliceDefaultPrimary,
       StatsBlockSliceVariation,
       StatsBlockSliceDefault,
+      StudentHeroBlockSlice,
+      StudentHeroBlockSliceDefaultPrimaryImagesItem,
+      StudentHeroBlockSliceDefaultPrimary,
+      StudentHeroBlockSliceVariation,
+      StudentHeroBlockSliceDefault,
     };
   }
 }

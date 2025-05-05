@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
 import { StatsCounter } from "@/components/StatsCounter";
-import { PrismicNextImage } from "@prismicio/next";
 import { staticBlurDataUrl } from "@/utils/staticBlurUrl";
-import { Briefcase, Hammer, LocateIcon, MapPin, Presentation } from "lucide-react";
+import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
+import { SliceComponentProps } from "@prismicio/react";
+import { Briefcase, Hammer, MapPin } from "lucide-react";
+import { FC } from "react";
 
 /**
  * Props for `AboutMeBlock`.

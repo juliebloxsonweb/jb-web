@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "home",
-  "label": "Home",
+  "id": "students",
+  "label": "Students",
   "repeatable": false,
   "status": true,
   "json": {
@@ -11,13 +11,10 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "home_students_block": {
+            "gallery_block": {
               "type": "SharedSlice"
             },
-            "about_hero_block": {
-              "type": "SharedSlice"
-            },
-            "services_block": {
+            "student_hero_block": {
               "type": "SharedSlice"
             }
           }
@@ -49,6 +46,13 @@
           "thumbnails": []
         },
         "type": "Image"
+      },
+      "keyword": {
+        "type": "Text",
+        "config": {
+          "label": "keyword",
+          "placeholder": ""
+        }
       }
     }
   }
