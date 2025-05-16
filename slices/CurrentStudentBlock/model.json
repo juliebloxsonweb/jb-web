@@ -1,0 +1,64 @@
+{
+  "id": "current_student_block",
+  "type": "SharedSlice",
+  "name": "CurrentStudentBlock",
+  "description": "CurrentStudentBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "students": {
+          "type": "Group",
+          "config": {
+            "label": "students",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "name",
+                  "placeholder": ""
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "biography": {
+                "type": "Text",
+                "config": {
+                  "label": "biography",
+                  "placeholder": ""
+                }
+              },
+              "graduation_year": {
+                "type": "Text",
+                "config": {
+                  "label": "graduation year",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

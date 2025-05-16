@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "recent_students_block": {
+              "type": "SharedSlice"
+            },
+            "current_student_block": {
+              "type": "SharedSlice"
+            },
             "gallery_block": {
               "type": "SharedSlice"
             },
