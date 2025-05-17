@@ -47,7 +47,7 @@ const StudentHeroBlock: FC<StudentHeroBlockProps> = ({ slice }) => {
 
               <div className="w-[fit-content]">
                 <Button
-                  className="bg-black"
+                  className="bg-black text-white"
                   text={slice.primary.btn_text}
                   link={slice.primary.btn_link}
                 />

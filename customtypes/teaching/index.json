@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "students",
-  "label": "Students",
+  "id": "teaching",
+  "label": "Teaching",
   "repeatable": false,
   "status": true,
   "json": {
@@ -11,16 +11,10 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "past_students_block": {
+            "teaching_hero_block": {
               "type": "SharedSlice"
             },
-            "current_student_block": {
-              "type": "SharedSlice"
-            },
-            "gallery_block": {
-              "type": "SharedSlice"
-            },
-            "student_hero_block": {
+            "courses_block": {
               "type": "SharedSlice"
             }
           }
@@ -53,10 +47,10 @@
         },
         "type": "Image"
       },
-      "keyword": {
+      "keywords": {
         "type": "Text",
         "config": {
-          "label": "keyword",
+          "label": "keywords",
           "placeholder": ""
         }
       }

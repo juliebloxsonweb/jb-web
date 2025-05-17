@@ -56,7 +56,10 @@ export const Navbar = () => {
 
           {/* Logo */}
           <Link href="/" className="px-3 py-1 rounded-full">
-            <span className="font-extrabold text-2xl">Dr. Julie Bloxson</span>
+            <span className="font-extrabold text-2xl">
+              Dr<span className="text-green">.</span> Julie{" "}
+              <span className="text-green">Bloxson</span>
+            </span>
           </Link>
 
           {/* 3 links at the right  */}

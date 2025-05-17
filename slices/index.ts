@@ -5,13 +5,15 @@ import dynamic from "next/dynamic";
 export const components = {
   about_hero_block: dynamic(() => import("./AboutHeroBlock")),
   about_me_block: dynamic(() => import("./AboutMeBlock")),
+  courses_block: dynamic(() => import("./CoursesBlock")),
   current_student_block: dynamic(() => import("./CurrentStudentBlock")),
   gallery_block: dynamic(() => import("./GalleryBlock")),
   hero_block: dynamic(() => import("./HeroBlock")),
   home_students_block: dynamic(() => import("./HomeStudentsBlock")),
   items_block: dynamic(() => import("./ItemsBlock")),
-  recent_students_block: dynamic(() => import("./RecentStudentsBlock")),
+  past_students_block: dynamic(() => import("./PastStudentsBlock")),
   services_block: dynamic(() => import("./ServicesBlock")),
   stats_block: dynamic(() => import("./StatsBlock")),
   student_hero_block: dynamic(() => import("./StudentHeroBlock")),
+  teaching_hero_block: dynamic(() => import("./TeachingHeroBlock")),
 };

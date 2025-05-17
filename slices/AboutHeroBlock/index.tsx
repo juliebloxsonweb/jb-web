@@ -32,7 +32,7 @@ const AboutHeroBlock: FC<AboutHeroBlockProps> = ({ slice }) => {
                 {slice.primary.content}
               </h1>
               <Button
-                className="bg-black"
+                className="bg-black text-white"
                 text={slice.primary.btn_text}
                 link={slice.primary.btn_link}
               />

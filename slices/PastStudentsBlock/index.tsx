@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/Button";
 import { CloseIcon } from "@/components/CloseIcon";
 import { Title } from "@/components/Title";
 import { useOutsideClick } from "@/hooks/useClickOutside";
@@ -12,16 +13,15 @@ import { AnimatePresence } from "motion/react";
 import { FC, useEffect, useId, useRef, useState } from "react";
 
 /**
- * Props for `CurrentStudentBlock`.
+ * Props for `PastStudentsBlock`.
  */
-export type CurrentStudentBlockProps =
-  SliceComponentProps<Content.CurrentStudentBlockSlice>;
-
+export type PastStudentsBlockProps =
+  SliceComponentProps<Content.PastStudentsBlockSlice>;
 
 /**
- * Component for "CurrentStudentBlock" Slices.
+ * Component for "PastStudentsBlock" Slices.
  */
-const CurrentStudentBlock: FC<CurrentStudentBlockProps> = ({ slice }) => {
+const PastStudentsBlock: FC<PastStudentsBlockProps> = ({ slice }) => {
   const getBlurSvg = staticBlurDataUrl();
 
   const [active, setActive] = useState<
@@ -58,7 +58,7 @@ const CurrentStudentBlock: FC<CurrentStudentBlockProps> = ({ slice }) => {
       <div className="container">
         <Title text={slice.primary.title} />
 
-        {/* Current Students  */}
+        {/* Past Students  */}
         <>
           <AnimatePresence>
             {active && typeof active === "object" && (
@@ -120,8 +120,16 @@ const CurrentStudentBlock: FC<CurrentStudentBlockProps> = ({ slice }) => {
                           layoutId={`description-${active.name}-${id}`}
                           className="text-base"
                         >
-                          {active.biography}
+                          {active.bio}
                         </motion.p>
+
+                        <div className="w-[fit-content] pt-4 !rounded-full">
+                          <Button
+                            className="bg-green text-black"
+                            text={"Link to thesis"}
+                            link={active.project_link}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -182,4 +190,4 @@ const CurrentStudentBlock: FC<CurrentStudentBlockProps> = ({ slice }) => {
   );
 };
 
-export default CurrentStudentBlock;
+export default PastStudentsBlock;

@@ -19,12 +19,12 @@ export const Button = ({ text, link, className }: ButtonProps) => {
     <div>
       <PrismicNextLink
         field={link}
-        className={clsx("flex rounded-xl overflow-hidden", className)}
+        className={clsx("flex rounded-full overflow-hidden", className)}
         onMouseEnter={() => setHover(text)}
         onMouseLeave={() => setHover("")}
       >
-        <div className="w-full flex justify-center items-center text-white  py-1.5 px-2 md:py-2 md:px-3">
-          <p className="text-lg font-medium capitalize px-2">{text}</p>
+        <div className="w-full flex justify-center items-center py-1.5 px-2 md:py-1 md:px-3">
+          <p className="text-lg font-medium px-2">{text}</p>
           <AnimatePresence>
             {hovered === text && (
               <motion.div
