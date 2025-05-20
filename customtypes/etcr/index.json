@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "home",
-  "label": "Home",
+  "id": "etcr",
+  "label": "ETCR",
   "repeatable": false,
   "status": true,
   "json": {
@@ -11,19 +11,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "about_core_lab": {
-              "type": "SharedSlice"
-            },
-            "home_hero_block": {
-              "type": "SharedSlice"
-            },
-            "home_students_block": {
-              "type": "SharedSlice"
-            },
-            "about_hero_block": {
-              "type": "SharedSlice"
-            },
-            "services_block": {
+            "etcr_hero_block": {
               "type": "SharedSlice"
             }
           }
@@ -55,6 +43,13 @@
           "thumbnails": []
         },
         "type": "Image"
+      },
+      "keywords": {
+        "type": "Text",
+        "config": {
+          "label": "keywords",
+          "placeholder": ""
+        }
       }
     }
   }

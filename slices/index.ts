@@ -3,12 +3,15 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  about_core_lab: dynamic(() => import("./AboutCoreLab")),
   about_hero_block: dynamic(() => import("./AboutHeroBlock")),
   about_me_block: dynamic(() => import("./AboutMeBlock")),
   courses_block: dynamic(() => import("./CoursesBlock")),
   current_student_block: dynamic(() => import("./CurrentStudentBlock")),
+  etcr_hero_block: dynamic(() => import("./EtcrHeroBlock")),
   gallery_block: dynamic(() => import("./GalleryBlock")),
   hero_block: dynamic(() => import("./HeroBlock")),
+  home_hero_block: dynamic(() => import("./HomeHeroBlock")),
   home_students_block: dynamic(() => import("./HomeStudentsBlock")),
   items_block: dynamic(() => import("./ItemsBlock")),
   past_students_block: dynamic(() => import("./PastStudentsBlock")),

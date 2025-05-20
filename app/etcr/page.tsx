@@ -5,19 +5,19 @@ import { components } from "@/slices";
 
 export async function generateMetadata() {
   const client = createClient();
-  const page = await client.getSingle("students");
+  const page = await client.getSingle("etcr");
 
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
     image: page.data.meta_image,
-    keywords: page.data.keyword,
+    keywords: page.data.keywords,
   };
 }
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getSingle("students");
+  const page = await client.getSingle("etcr");
 
   return <SliceZone slices={page.data.slices} components={components} />;
 }

@@ -1,8 +1,8 @@
 {
-  "id": "teaching_hero_block",
+  "id": "about_core_lab",
   "type": "SharedSlice",
-  "name": "TeachingHeroBlock",
-  "description": "TeachingHeroBlock",
+  "name": "AboutCoreLab",
+  "description": "AboutCoreLab",
   "variations": [
     {
       "id": "default",

@@ -1,0 +1,59 @@
+{
+  "id": "etcr_hero_block",
+  "type": "SharedSlice",
+  "name": "EtcrHeroBlock",
+  "description": "EtcrHeroBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "content": {
+          "type": "Text",
+          "config": {
+            "label": "content",
+            "placeholder": ""
+          }
+        },
+        "btn_text": {
+          "type": "Text",
+          "config": {
+            "label": "btn text",
+            "placeholder": ""
+          }
+        },
+        "btn_url": {
+          "type": "Link",
+          "config": {
+            "label": "btn url",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": false,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

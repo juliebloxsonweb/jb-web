@@ -41,7 +41,7 @@ export const Navbar = () => {
                 <Link
                   href={item.path}
                   className={`text-black flex items-center space-x-2 transition-colors
-                    ${isActive(item.path) && "font-bold border border-black bg-green px-3 py-1 rounded-full"}  
+                    ${isActive(item.path) && "font-bold text-white border border-black bg-green px-3 py-1 rounded-full"}  
                     `}
                 >
                   {isActive(item.path) && (
@@ -56,10 +56,7 @@ export const Navbar = () => {
 
           {/* Logo */}
           <Link href="/" className="px-3 py-1 rounded-full">
-            <span className="font-extrabold text-2xl">
-              Dr<span className="text-green">.</span> Julie{" "}
-              <span className="text-green">Bloxson</span>
-            </span>
+            <span className="font-extrabold text-2xl">Dr. Julie Bloxson</span>
           </Link>
 
           {/* 3 links at the right  */}
@@ -69,7 +66,7 @@ export const Navbar = () => {
                 <Link
                   href={item.path}
                   className={`text-black flex items-center space-x-2  transition-colors
-                    ${isActive(item.path) && "font-bold border border-black bg-green px-3 py-1 rounded-full"}  
+                    ${isActive(item.path) && "font-bold text-white border border-black bg-green px-3 py-1 rounded-full"}  
                     `}
                 >
                   {isActive(item.path) && (

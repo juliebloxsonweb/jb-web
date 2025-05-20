@@ -6,31 +6,34 @@ import { staticBlurDataUrl } from "@/utils/staticBlurUrl";
 import { Button } from "@/components/Button";
 
 /**
- * Props for `AboutHeroBlock`.
+ * Props for `HomeHeroBlock`.
  */
-export type AboutHeroBlockProps =
-  SliceComponentProps<Content.AboutHeroBlockSlice>;
+export type HomeHeroBlockProps =
+  SliceComponentProps<Content.HomeHeroBlockSlice>;
 
 /**
- * Component for "AboutHeroBlock" Slices.
+ * Component for "HomeHeroBlock" Slices.
  */
-const AboutHeroBlock: FC<AboutHeroBlockProps> = ({ slice }) => {
+const HomeHeroBlock: FC<HomeHeroBlockProps> = ({ slice }) => {
   const getBlurSvg = staticBlurDataUrl();
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="pt-20 pb-16"
+      className="py-20"
     >
       <div className="container">
-        <div className=" grid md:grid-cols-2 gap-y-8 md:gap-x-8">
-          <div className="h-full w-full md:min-h-[500px] bg-[#ebf96d] rounded-3xl px-4 py-4 border border-black order-2 lg:order-1">
-            <div className="flex flex-col h-full md:justify-center items-center text-center">
+        <div className=" grid md:grid-cols-2 gap-y-8 md:gap-x-4 xl:gap-x-8">
+          <div className="h-full w-full min-h-[500px] bg-[#edf6e9] border border-black  rounded-3xl px-4 py-4">
+            <div className="flex flex-col h-full justify-center items-center text-center">
               <span className="text-lg uppercase">{slice.primary.title}</span>
               <h1 className="text-4xl lg:text-5xl xl:text-7xl font-medium mb-8 lg:mb-16">
                 {slice.primary.content}
               </h1>
+
+              {/* Button */}
+
               <Button
                 className="bg-black text-white"
                 text={slice.primary.btn_text}
@@ -38,27 +41,27 @@ const AboutHeroBlock: FC<AboutHeroBlockProps> = ({ slice }) => {
               />
             </div>
           </div>
-          <div className="h-full border border-black rounded-3xl overflow-hidden order-1 lg:order-2 relative">
+
+          {/* Image */}
+          <div className="max-h-[800px] h-full border border-black rounded-3xl overflow-hidden relative">
             <PrismicNextImage
               field={slice.primary.image}
               width={slice.primary.image.dimensions?.width}
               height={slice.primary.image.dimensions?.height}
-              className="size-full object-cover object-top rounded-3xl"
+              className="size-full rounded-3xl"
               placeholder="blur"
               blurDataURL={getBlurSvg}
             />
             <div className="absolute bottom-4 right-2">
-              <span className="bg-white text-lg px-4 py-2 rounded-xl font-bold border border-black capitalize">
-                {slice.primary.name}
-              </span>
+              {/* <span className="bg-white text-lg px-4 py-2 rounded-xl font-bold border border-black capitalize">
+                           {slice.primary.name}
+                         </span> */}
             </div>
           </div>
-
-          {/* Button */}
         </div>
       </div>
     </section>
   );
 };
 
-export default AboutHeroBlock;
+export default HomeHeroBlock;
