@@ -1,0 +1,71 @@
+{
+  "id": "etcr_text_image_block",
+  "type": "SharedSlice",
+  "name": "EtcrTextImageBlock",
+  "description": "EtcrTextImageBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "text_one": {
+          "type": "Text",
+          "config": {
+            "label": "text_one",
+            "placeholder": ""
+          }
+        },
+        "text_two": {
+          "type": "Text",
+          "config": {
+            "label": "text_two",
+            "placeholder": ""
+          }
+        },
+        "text_three": {
+          "type": "Text",
+          "config": {
+            "label": "text_three",
+            "placeholder": ""
+          }
+        },
+        "text_four": {
+          "type": "Text",
+          "config": {
+            "label": "text_four",
+            "placeholder": ""
+          }
+        },
+        "images": {
+          "type": "Group",
+          "config": {
+            "label": "images",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

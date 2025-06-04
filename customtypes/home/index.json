@@ -11,13 +11,13 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_slider": {
+              "type": "SharedSlice"
+            },
             "about_core_lab": {
               "type": "SharedSlice"
             },
             "home_hero_block": {
-              "type": "SharedSlice"
-            },
-            "home_students_block": {
               "type": "SharedSlice"
             },
             "about_hero_block": {

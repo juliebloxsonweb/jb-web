@@ -80,7 +80,10 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
-type EtcrDocumentDataSlicesSlice = EtcrHeroBlockSlice;
+type EtcrDocumentDataSlicesSlice =
+  | EtcrTextImageBlockSlice
+  | AboutCoreLabSlice
+  | EtcrHeroBlockSlice;
 
 /**
  * Content for ETCR documents
@@ -153,9 +156,9 @@ export type EtcrDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<EtcrDocumentData>, "etcr", Lang>;
 
 type HomeDocumentDataSlicesSlice =
+  | ImageSliderSlice
   | AboutCoreLabSlice
   | HomeHeroBlockSlice
-  | HomeStudentsBlockSlice
   | AboutHeroBlockSlice
   | ServicesBlockSlice;
 
@@ -955,6 +958,118 @@ export type EtcrHeroBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *EtcrTextImageBlock → Default → Primary → images*
+ */
+export interface EtcrTextImageBlockSliceDefaultPrimaryImagesItem {
+  /**
+   * image field in *EtcrTextImageBlock → Default → Primary → images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *EtcrTextImageBlock → Default → Primary*
+ */
+export interface EtcrTextImageBlockSliceDefaultPrimary {
+  /**
+   * title field in *EtcrTextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * text_one field in *EtcrTextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.text_one
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_one: prismic.KeyTextField;
+
+  /**
+   * text_two field in *EtcrTextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.text_two
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_two: prismic.KeyTextField;
+
+  /**
+   * text_three field in *EtcrTextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.text_three
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_three: prismic.KeyTextField;
+
+  /**
+   * text_four field in *EtcrTextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.text_four
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_four: prismic.KeyTextField;
+
+  /**
+   * images field in *EtcrTextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_text_image_block.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<EtcrTextImageBlockSliceDefaultPrimaryImagesItem>
+  >;
+}
+
+/**
+ * Default variation for EtcrTextImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EtcrTextImageBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EtcrTextImageBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *EtcrTextImageBlock*
+ */
+type EtcrTextImageBlockSliceVariation = EtcrTextImageBlockSliceDefault;
+
+/**
+ * EtcrTextImageBlock Shared Slice
+ *
+ * - **API ID**: `etcr_text_image_block`
+ * - **Description**: EtcrTextImageBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EtcrTextImageBlockSlice = prismic.SharedSlice<
+  "etcr_text_image_block",
+  EtcrTextImageBlockSliceVariation
+>;
+
+/**
  * Item in *GalleryBlock → Default → Primary → images*
  */
 export interface GalleryBlockSliceDefaultPrimaryImagesItem {
@@ -1173,85 +1288,85 @@ export type HomeHeroBlockSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *HomeStudentsBlock → Default → Primary → students*
+ * Item in *ImageSlider → Default → Primary → images*
  */
-export interface HomeStudentsBlockSliceDefaultPrimaryStudentsItem {
+export interface ImageSliderSliceDefaultPrimaryImagesItem {
   /**
-   * name field in *HomeStudentsBlock → Default → Primary → students*
+   * image field in *ImageSlider → Default → Primary → images*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: home_students_block.default.primary.students[].name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: image_slider.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  name: prismic.KeyTextField;
+  image: prismic.ImageField<never>;
 
   /**
-   * thesis field in *HomeStudentsBlock → Default → Primary → students*
+   * caption field in *ImageSlider → Default → Primary → images*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: home_students_block.default.primary.students[].thesis
+   * - **API ID Path**: image_slider.default.primary.images[].caption
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  thesis: prismic.KeyTextField;
+  caption: prismic.KeyTextField;
 }
 
 /**
- * Primary content in *HomeStudentsBlock → Default → Primary*
+ * Primary content in *ImageSlider → Default → Primary*
  */
-export interface HomeStudentsBlockSliceDefaultPrimary {
+export interface ImageSliderSliceDefaultPrimary {
   /**
-   * title field in *HomeStudentsBlock → Default → Primary*
+   * title field in *ImageSlider → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: home_students_block.default.primary.title
+   * - **API ID Path**: image_slider.default.primary.title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * students field in *HomeStudentsBlock → Default → Primary*
+   * images field in *ImageSlider → Default → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: home_students_block.default.primary.students[]
+   * - **API ID Path**: image_slider.default.primary.images[]
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  students: prismic.GroupField<
-    Simplify<HomeStudentsBlockSliceDefaultPrimaryStudentsItem>
+  images: prismic.GroupField<
+    Simplify<ImageSliderSliceDefaultPrimaryImagesItem>
   >;
 }
 
 /**
- * Default variation for HomeStudentsBlock Slice
+ * Default variation for ImageSlider Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HomeStudentsBlockSliceDefault = prismic.SharedSliceVariation<
+export type ImageSliderSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<HomeStudentsBlockSliceDefaultPrimary>,
+  Simplify<ImageSliderSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *HomeStudentsBlock*
+ * Slice variation for *ImageSlider*
  */
-type HomeStudentsBlockSliceVariation = HomeStudentsBlockSliceDefault;
+type ImageSliderSliceVariation = ImageSliderSliceDefault;
 
 /**
- * HomeStudentsBlock Shared Slice
+ * ImageSlider Shared Slice
  *
- * - **API ID**: `home_students_block`
- * - **Description**: HomeStudentsBlock
+ * - **API ID**: `image_slider`
+ * - **Description**: ImageSlider
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HomeStudentsBlockSlice = prismic.SharedSlice<
-  "home_students_block",
-  HomeStudentsBlockSliceVariation
+export type ImageSliderSlice = prismic.SharedSlice<
+  "image_slider",
+  ImageSliderSliceVariation
 >;
 
 /**
@@ -1949,6 +2064,11 @@ declare module "@prismicio/client" {
       EtcrHeroBlockSliceDefaultPrimary,
       EtcrHeroBlockSliceVariation,
       EtcrHeroBlockSliceDefault,
+      EtcrTextImageBlockSlice,
+      EtcrTextImageBlockSliceDefaultPrimaryImagesItem,
+      EtcrTextImageBlockSliceDefaultPrimary,
+      EtcrTextImageBlockSliceVariation,
+      EtcrTextImageBlockSliceDefault,
       GalleryBlockSlice,
       GalleryBlockSliceDefaultPrimaryImagesItem,
       GalleryBlockSliceDefaultPrimary,
@@ -1962,11 +2082,11 @@ declare module "@prismicio/client" {
       HomeHeroBlockSliceDefaultPrimary,
       HomeHeroBlockSliceVariation,
       HomeHeroBlockSliceDefault,
-      HomeStudentsBlockSlice,
-      HomeStudentsBlockSliceDefaultPrimaryStudentsItem,
-      HomeStudentsBlockSliceDefaultPrimary,
-      HomeStudentsBlockSliceVariation,
-      HomeStudentsBlockSliceDefault,
+      ImageSliderSlice,
+      ImageSliderSliceDefaultPrimaryImagesItem,
+      ImageSliderSliceDefaultPrimary,
+      ImageSliderSliceVariation,
+      ImageSliderSliceDefault,
       ItemsBlockSlice,
       ItemsBlockSliceDefaultPrimaryPublicationsItem,
       ItemsBlockSliceDefaultPrimaryEventsItem,

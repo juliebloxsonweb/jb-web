@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "etcr_text_image_block": {
+              "type": "SharedSlice"
+            },
+            "about_core_lab": {
+              "type": "SharedSlice"
+            },
             "etcr_hero_block": {
               "type": "SharedSlice"
             }

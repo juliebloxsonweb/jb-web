@@ -1,8 +1,8 @@
 "use client";
 import { KeyTextField } from "@prismicio/client";
 import { Plus } from "lucide-react";
-import { useSpring, motion } from "motion/react";
-import React, { useEffect, useState } from "react";
+import { useSpring, motion, useInView } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
 
 type StatsProps = {
   count: number;
@@ -15,20 +15,28 @@ export function StatsCounter({ count, text }: StatsProps) {
     bounce: 0,
     duration: 1000,
   });
-  
 
-  springStatsCount.on("change", (value) => {
-    setDisplayStats(Math.round(value));
-  });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    springStatsCount.set(count);
-  });
+    if (isInView) {
+      springStatsCount.set(count);
+    }
+  }, [isInView, count, springStatsCount]);
+
+  useEffect(() => {
+    const unsubscribe = springStatsCount.on("change", (value) => {
+      setDisplayStats(Math.round(value));
+    });
+    return () => unsubscribe();
+  }, [springStatsCount]);
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       className="flex flex-col justify-center items-center"
     >

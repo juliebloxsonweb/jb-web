@@ -1,8 +1,8 @@
 {
-  "id": "home_students_block",
+  "id": "image_slider",
   "type": "SharedSlice",
-  "name": "HomeStudentsBlock",
-  "description": "HomeStudentsBlock",
+  "name": "ImageSlider",
+  "description": "ImageSlider",
   "variations": [
     {
       "id": "default",
@@ -19,23 +19,24 @@
             "placeholder": ""
           }
         },
-        "students": {
+        "images": {
           "type": "Group",
           "config": {
-            "label": "students",
+            "label": "images",
             "repeat": true,
             "fields": {
-              "name": {
-                "type": "Text",
+              "image": {
+                "type": "Image",
                 "config": {
-                  "label": "name",
-                  "placeholder": ""
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
                 }
               },
-              "thesis": {
+              "caption": {
                 "type": "Text",
                 "config": {
-                  "label": "thesis",
+                  "label": "caption",
                   "placeholder": ""
                 }
               }
