@@ -51,6 +51,23 @@
             "allowText": false,
             "repeat": false
           }
+        },
+        "images": {
+          "type": "Group",
+          "config": {
+            "label": "images",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
         }
       },
       "items": {}

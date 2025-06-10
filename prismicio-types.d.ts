@@ -1197,6 +1197,21 @@ export type HeroBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *HomeHeroBlock → Default → Primary → images*
+ */
+export interface HomeHeroBlockSliceDefaultPrimaryImagesItem {
+  /**
+   * image field in *HomeHeroBlock → Default → Primary → images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero_block.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
  * Primary content in *HomeHeroBlock → Default → Primary*
  */
 export interface HomeHeroBlockSliceDefaultPrimary {
@@ -1254,6 +1269,18 @@ export interface HomeHeroBlockSliceDefaultPrimary {
     unknown,
     prismic.FieldState,
     never
+  >;
+
+  /**
+   * images field in *HomeHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero_block.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<HomeHeroBlockSliceDefaultPrimaryImagesItem>
   >;
 }
 
@@ -2079,6 +2106,7 @@ declare module "@prismicio/client" {
       HeroBlockSliceVariation,
       HeroBlockSliceDefault,
       HomeHeroBlockSlice,
+      HomeHeroBlockSliceDefaultPrimaryImagesItem,
       HomeHeroBlockSliceDefaultPrimary,
       HomeHeroBlockSliceVariation,
       HomeHeroBlockSliceDefault,
