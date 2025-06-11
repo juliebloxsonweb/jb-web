@@ -117,7 +117,7 @@ const HomeHeroBlock: FC<HomeHeroBlockProps> = ({ slice }) => {
                       field={item.image}
                       width={item.image.dimensions?.width}
                       height={item.image.dimensions?.height}
-                      className="size-full md:h-[800px] w-full object-contain"
+                      className="size-full md:h-[40rem] lg:h-[35rem] xl:h-[50rem] w-full object-contain"
                       placeholder="blur"
                       blurDataURL={getBlurSvg}
                     />
