@@ -52,11 +52,12 @@ const ImageSlider: FC<ImageSliderProps> = ({ slice }) => {
             },
           }}
           coverflowEffect={{
-            rotate: 0,
+            rotate: 10,
             stretch: -65,
             depth: 250,
+            scale: 1,
             modifier: 3.5,
-            slideShadows: false,
+            slideShadows: true,
           }}
           navigation={{
             nextEl: ".swiper-button-next",
@@ -68,24 +69,23 @@ const ImageSlider: FC<ImageSliderProps> = ({ slice }) => {
           {slice.primary.images.map(({ image, caption }, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col rounded-lg shadow-3xl border-black border bg-white overflow-hidden">
-               
                 <div className="aspect-square">
                   <PrismicNextImage
                     field={image}
-                    className="size-full object-cover border-t border-b border-black"
+                    className="size-full object-cover border-b border-black"
                     placeholder="blur"
                     blurDataURL={getBlurSvg}
                   />
                 </div>
 
                 <div className="flex px-6 pt-6 pb-4">
-                 <p>{caption}</p>
+                  <p>{caption}</p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
 
-          <div className="relative bottom-0 flex items-center justify-center gap-[10px]">
+          <div className="relative bottom-0 flex items-center justify-center gap-[10px] mt-2">
             <div className="swiper-button-prev">
               <button
                 type="button"

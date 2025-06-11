@@ -1,0 +1,48 @@
+{
+  "id": "research_hero_block",
+  "type": "SharedSlice",
+  "name": "ResearchHeroBlock",
+  "description": "ResearchHeroBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "content": {
+          "type": "Text",
+          "config": {
+            "label": "content",
+            "placeholder": ""
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "image caption",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

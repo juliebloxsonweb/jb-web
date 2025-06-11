@@ -221,6 +221,82 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+type ResearchDocumentDataSlicesSlice = ResearchHeroBlockSlice;
+
+/**
+ * Content for Research documents
+ */
+interface ResearchDocumentData {
+  /**
+   * Slice Zone field in *Research*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ResearchDocumentDataSlicesSlice> /**
+   * Meta Title field in *Research*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: research.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Research*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: research.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Research*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Keywords field in *Research*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research.keywords
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  keywords: prismic.KeyTextField;
+}
+
+/**
+ * Research document from Prismic
+ *
+ * - **API ID**: `research`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ResearchDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ResearchDocumentData>,
+    "research",
+    Lang
+  >;
+
 type StudentsDocumentDataSlicesSlice =
   | PastStudentsBlockSlice
   | CurrentStudentBlockSlice
@@ -383,6 +459,7 @@ export type AllDocumentTypes =
   | AboutDocument
   | EtcrDocument
   | HomeDocument
+  | ResearchDocument
   | StudentsDocument
   | TeachingDocument;
 
@@ -1216,16 +1293,6 @@ export interface HomeHeroBlockSliceDefaultPrimaryImagesItem {
  */
 export interface HomeHeroBlockSliceDefaultPrimary {
   /**
-   * image field in *HomeHeroBlock → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home_hero_block.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
    * title field in *HomeHeroBlock → Default → Primary*
    *
    * - **Field Type**: Text
@@ -1657,6 +1724,81 @@ export type PastStudentsBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ResearchHeroBlock → Default → Primary*
+ */
+export interface ResearchHeroBlockSliceDefaultPrimary {
+  /**
+   * title field in *ResearchHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research_hero_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * content field in *ResearchHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research_hero_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * image field in *ResearchHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research_hero_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * image caption field in *ResearchHeroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: research_hero_block.default.primary.image_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_caption: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ResearchHeroBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ResearchHeroBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ResearchHeroBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ResearchHeroBlock*
+ */
+type ResearchHeroBlockSliceVariation = ResearchHeroBlockSliceDefault;
+
+/**
+ * ResearchHeroBlock Shared Slice
+ *
+ * - **API ID**: `research_hero_block`
+ * - **Description**: ResearchHeroBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ResearchHeroBlockSlice = prismic.SharedSlice<
+  "research_hero_block",
+  ResearchHeroBlockSliceVariation
+>;
+
+/**
  * Item in *ServicesBlock → Default → Primary → services*
  */
 export interface ServicesBlockSliceDefaultPrimaryServicesItem {
@@ -2057,6 +2199,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      ResearchDocument,
+      ResearchDocumentData,
+      ResearchDocumentDataSlicesSlice,
       StudentsDocument,
       StudentsDocumentData,
       StudentsDocumentDataSlicesSlice,
@@ -2127,6 +2272,10 @@ declare module "@prismicio/client" {
       PastStudentsBlockSliceDefaultPrimary,
       PastStudentsBlockSliceVariation,
       PastStudentsBlockSliceDefault,
+      ResearchHeroBlockSlice,
+      ResearchHeroBlockSliceDefaultPrimary,
+      ResearchHeroBlockSliceVariation,
+      ResearchHeroBlockSliceDefault,
       ServicesBlockSlice,
       ServicesBlockSliceDefaultPrimaryServicesItem,
       ServicesBlockSliceDefaultPrimary,

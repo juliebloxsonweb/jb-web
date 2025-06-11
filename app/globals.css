@@ -108,21 +108,12 @@ body {
   font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
-.tape img {
-  width: 100%;
-  display: block;
+.swiper-slide img {
+  filter: grayscale(90%);
 }
 
-.tape:before {
-  display: block;
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  width: 100px;
-  height: 20px;
-  margin-left: -50px;
-  background: rgba(255, 255, 255, 0.6);
+.swiper-slide-active img {
+  filter: grayscale(0%);
 }
 
 .dark {

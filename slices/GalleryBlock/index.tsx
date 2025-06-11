@@ -60,7 +60,7 @@ const GalleryBlock: FC<GalleryBlockProps> = ({ slice }) => {
                         rotate: 0,
                         zIndex: 100,
                       }}
-                      className="image rounded-[1.875rem] -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
+                      className="image rounded-[1.875rem] -mr-4 mt-4 p-1 bg-white border border-neutral-100 shrink-0 overflow-hidden"
                     >
                       <PrismicNextImage
                         field={item.image}

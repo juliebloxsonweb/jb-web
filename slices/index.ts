@@ -16,6 +16,7 @@ export const components = {
   image_slider: dynamic(() => import("./ImageSlider")),
   items_block: dynamic(() => import("./ItemsBlock")),
   past_students_block: dynamic(() => import("./PastStudentsBlock")),
+  research_hero_block: dynamic(() => import("./ResearchHeroBlock")),
   services_block: dynamic(() => import("./ServicesBlock")),
   stats_block: dynamic(() => import("./StatsBlock")),
   student_hero_block: dynamic(() => import("./StudentHeroBlock")),
