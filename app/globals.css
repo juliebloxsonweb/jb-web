@@ -116,6 +116,11 @@ body {
   filter: grayscale(0%);
 }
 
+.text-outline {
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #27b058;
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

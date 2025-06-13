@@ -125,7 +125,7 @@ const PastStudentsBlock: FC<PastStudentsBlockProps> = ({ slice }) => {
 
                         <div className="w-[fit-content] pt-4 !rounded-full">
                           <Button
-                            className="bg-green text-black"
+                            className="bg-green text-white"
                             text={"Link to thesis"}
                             link={active.project_link}
                           />
@@ -176,7 +176,7 @@ const PastStudentsBlock: FC<PastStudentsBlockProps> = ({ slice }) => {
                       exit={{ opacity: 0 }}
                     >
                       <div className="w-10 h-10 flex items-center justify-center rounded-full bg-green text-black border border-black shrink-0">
-                        <Expand className="h-5 w-5 min-w-min min-h-min" />
+                        <Expand className="h-5 w-5 min-w-min min-h-min text-white" />
                       </div>
                     </motion.div>
                   </div>

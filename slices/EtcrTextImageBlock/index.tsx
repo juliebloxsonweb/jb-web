@@ -39,18 +39,22 @@ const EtcrTextImageBlock: FC<EtcrTextImageBlockProps> = ({ slice }) => {
     >
       <div className="container">
         <div className="w-full mx-auto flex justify-center mb-4 md:mb-16">
-          <h2 className="text-5xl font-bold mb-8 text-center">{slice.primary.title}</h2>
+          <h2 className="text-5xl font-bold mb-8 text-center">
+            {slice.primary.title}
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr_1fr] gap-y-8 lg:gap-y-0 gap-x-4">
           {/* text one */}
-          <p className="text-lg">{slice.primary.text_one}</p>
+          <div className="flex flex-col">
+            <div className="text-6xl text-transparent leading-none font-extrabold text-outline">
+              01.
+            </div>
+            <p className="text-lg">{slice.primary.text_one}</p>
+          </div>
 
           {/* Image */}
-          <div
-            className="flex flex-col self-center col-span-1 row-span-1 lg:row-span-2"
-           
-          >
+          <div className="flex flex-col self-center col-span-1 row-span-1 lg:row-span-2">
             <div className="h-[500px] w-full relative rounded-[1.25rem] ">
               {slice.primary.images.map((item, index) => (
                 <div
@@ -59,9 +63,6 @@ const EtcrTextImageBlock: FC<EtcrTextImageBlockProps> = ({ slice }) => {
                   }`}
                   key={index}
                 >
-                  {/* <div className="absolute bg-[#173f2c] text-lime py-2 px-4 w-[fit-content] text-center top-4 left-4 rounded-lg">
-                    <span className="font-bold">{item.service_name}</span>
-                  </div> */}
                   <PrismicNextImage
                     field={item.image}
                     width={item.image.dimensions?.width}
@@ -93,13 +94,28 @@ const EtcrTextImageBlock: FC<EtcrTextImageBlockProps> = ({ slice }) => {
           </div>
 
           {/* text two */}
-          <p className="text-lg">{slice.primary.text_two}</p>
+          <div className="flex flex-col">
+            <div className="text-6xl text-transparent leading-none font-extrabold text-outline">
+              02.
+            </div>
+            <p className="text-lg">{slice.primary.text_two}</p>
+          </div>
 
           {/* text three */}
-          <p className="text-lg">{slice.primary.text_three}</p>
+          <div className="flex flex-col">
+            <div className="text-6xl text-transparent leading-none font-extrabold text-outline">
+              03.
+            </div>
+            <p className="text-lg">{slice.primary.text_three}</p>
+          </div>
 
           {/* text four */}
-          <p className="text-lg">{slice.primary.text_four}</p>
+          <div className="flex flex-col">
+            <div className="text-6xl text-transparent leading-none font-extrabold text-outline">
+              04.
+            </div>
+            <p className="text-lg">{slice.primary.text_four}</p>
+          </div>
         </div>
       </div>
     </section>

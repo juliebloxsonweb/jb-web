@@ -8,6 +8,7 @@ export const components = {
   about_me_block: dynamic(() => import("./AboutMeBlock")),
   courses_block: dynamic(() => import("./CoursesBlock")),
   current_student_block: dynamic(() => import("./CurrentStudentBlock")),
+  etcr_download_card: dynamic(() => import("./EtcrDownloadCard")),
   etcr_hero_block: dynamic(() => import("./EtcrHeroBlock")),
   etcr_text_image_block: dynamic(() => import("./EtcrTextImageBlock")),
   gallery_block: dynamic(() => import("./GalleryBlock")),

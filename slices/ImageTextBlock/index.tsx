@@ -28,7 +28,7 @@ const ImageTextBlock: FC<ImageTextBlockProps> = ({ slice }) => {
       <div className="container">
         <div className="grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-16">
           <motion.div
-            className="hidden lg:flex"
+            className="hidden lg:flex shadow-lg border-6 md:border-9 border-white rounded-3xl overflow-hidden"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -52,9 +52,11 @@ const ImageTextBlock: FC<ImageTextBlockProps> = ({ slice }) => {
             className="flex flex-col justify-center gap-y-8 lg:max-w-[37.5rem]"
           >
             <h2 className="text-5xl font-bold">{slice.primary.title}</h2>
-            <p className="text-[1.125rem] text-justify">{slice.primary.content}</p>
+            <p className="text-[1.125rem] text-justify">
+              {slice.primary.content}
+            </p>
 
-            <div className="flex lg:hidden">
+            <div className="flex lg:hidden shadow-lg border-6 md:border-9 border-white rounded-3xl overflow-hidden">
               <PrismicNextImage
                 field={slice.primary.image}
                 width={slice.primary.image.dimensions?.width}
@@ -64,8 +66,6 @@ const ImageTextBlock: FC<ImageTextBlockProps> = ({ slice }) => {
                 blurDataURL={getBlurSvg}
               />
             </div>
-
-           
           </motion.div>
         </div>
       </div>

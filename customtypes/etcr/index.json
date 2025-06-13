@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "etcr_download_card": {
+              "type": "SharedSlice"
+            },
             "etcr_text_image_block": {
               "type": "SharedSlice"
             },

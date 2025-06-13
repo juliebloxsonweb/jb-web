@@ -15,8 +15,8 @@ export type EtcrHeroBlockProps =
  * Component for "EtcrHeroBlock" Slices.
  */
 const EtcrHeroBlock: FC<EtcrHeroBlockProps> = ({ slice }) => {
-    const getBlurSvg = staticBlurDataUrl();
-  
+  const getBlurSvg = staticBlurDataUrl();
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -24,9 +24,9 @@ const EtcrHeroBlock: FC<EtcrHeroBlockProps> = ({ slice }) => {
       className="pt-20"
     >
       <div className="container">
-        <div className=" grid md:grid-cols-2 gap-y-8 md:gap-x-8 bg-[#edf6e9] p-4 rounded-3xl">
+        <div className=" grid md:grid-cols-2 gap-y-8 md:gap-x-8 bg-[#edf6e9] p-4 rounded-3xl border border-black">
           {/* Image */}
-          <div className="h-full border border-black rounded-3xl overflow-hidden relative">
+          <div className="h-full  rounded-3xl overflow-hidden relative">
             <PrismicNextImage
               field={slice.primary.image}
               width={slice.primary.image.dimensions?.width}
@@ -35,11 +35,7 @@ const EtcrHeroBlock: FC<EtcrHeroBlockProps> = ({ slice }) => {
               placeholder="blur"
               blurDataURL={getBlurSvg}
             />
-            <div className="absolute bottom-4 right-2">
-              {/* <span className="bg-white text-lg px-4 py-2 rounded-xl font-bold border border-black capitalize">
-                     {slice.primary.name}
-                   </span> */}
-            </div>
+            <div className="absolute bottom-4 right-2"></div>
           </div>
           <div className="h-full w-full min-h-[500px]  rounded-3xl px-4 py-4">
             <div className="flex flex-col h-full justify-center items-center text-center">

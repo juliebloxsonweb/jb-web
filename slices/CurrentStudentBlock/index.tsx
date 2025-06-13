@@ -168,7 +168,7 @@ const CurrentStudentBlock: FC<CurrentStudentBlockProps> = ({ slice }) => {
                       exit={{ opacity: 0 }}
                     >
                       <div className="w-10 h-10 flex items-center justify-center rounded-full bg-green text-black border border-black shrink-0">
-                        <Expand className="h-5 w-5 min-w-min min-h-min" />
+                        <Expand className="h-5 w-5 min-w-min min-h-min text-white" />
                       </div>
                     </motion.div>
                   </div>

@@ -1,0 +1,61 @@
+{
+  "id": "etcr_download_card",
+  "type": "SharedSlice",
+  "name": "EtcrDownloadCard",
+  "description": "EtcrDownloadCard",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "content": {
+          "type": "Text",
+          "config": {
+            "label": "content",
+            "placeholder": ""
+          }
+        },
+        "links": {
+          "type": "Group",
+          "config": {
+            "label": "links",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "link_url": {
+                "type": "Link",
+                "config": {
+                  "label": "link url",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

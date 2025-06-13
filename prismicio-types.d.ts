@@ -81,6 +81,7 @@ export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
 type EtcrDocumentDataSlicesSlice =
+  | EtcrDownloadCardSlice
   | EtcrTextImageBlockSlice
   | AboutCoreLabSlice
   | EtcrHeroBlockSlice;
@@ -944,6 +945,104 @@ type CurrentStudentBlockSliceVariation = CurrentStudentBlockSliceDefault;
 export type CurrentStudentBlockSlice = prismic.SharedSlice<
   "current_student_block",
   CurrentStudentBlockSliceVariation
+>;
+
+/**
+ * Item in *EtcrDownloadCard → Default → Primary → links*
+ */
+export interface EtcrDownloadCardSliceDefaultPrimaryLinksItem {
+  /**
+   * title field in *EtcrDownloadCard → Default → Primary → links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_download_card.default.primary.links[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * link url field in *EtcrDownloadCard → Default → Primary → links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_download_card.default.primary.links[].link_url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *EtcrDownloadCard → Default → Primary*
+ */
+export interface EtcrDownloadCardSliceDefaultPrimary {
+  /**
+   * image field in *EtcrDownloadCard → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_download_card.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * content field in *EtcrDownloadCard → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_download_card.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * links field in *EtcrDownloadCard → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: etcr_download_card.default.primary.links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<
+    Simplify<EtcrDownloadCardSliceDefaultPrimaryLinksItem>
+  >;
+}
+
+/**
+ * Default variation for EtcrDownloadCard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EtcrDownloadCardSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EtcrDownloadCardSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *EtcrDownloadCard*
+ */
+type EtcrDownloadCardSliceVariation = EtcrDownloadCardSliceDefault;
+
+/**
+ * EtcrDownloadCard Shared Slice
+ *
+ * - **API ID**: `etcr_download_card`
+ * - **Description**: EtcrDownloadCard
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EtcrDownloadCardSlice = prismic.SharedSlice<
+  "etcr_download_card",
+  EtcrDownloadCardSliceVariation
 >;
 
 /**
@@ -2365,6 +2464,11 @@ declare module "@prismicio/client" {
       CurrentStudentBlockSliceDefaultPrimary,
       CurrentStudentBlockSliceVariation,
       CurrentStudentBlockSliceDefault,
+      EtcrDownloadCardSlice,
+      EtcrDownloadCardSliceDefaultPrimaryLinksItem,
+      EtcrDownloadCardSliceDefaultPrimary,
+      EtcrDownloadCardSliceVariation,
+      EtcrDownloadCardSliceDefault,
       EtcrHeroBlockSlice,
       EtcrHeroBlockSliceDefaultPrimary,
       EtcrHeroBlockSliceVariation,

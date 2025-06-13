@@ -37,20 +37,23 @@ const TextImageBlock: FC<TextImageBlockProps> = ({ slice }) => {
             <h2 className="text-5xl font-bold">{slice.primary.title}</h2>
             <p className="text-lg text-justify">{slice.primary.content}</p>
 
-            <PrismicNextImage
-              field={slice.primary.image}
-              width={slice.primary.image.dimensions?.width}
-              height={slice.primary.image.dimensions?.height}
-              placeholder="blur"
-              blurDataURL={getBlurSvg}
-              className="flex lg:hidden rounded-lg mb-4"
-            />
+            {/* image mobile view */}
 
+            <div className="flex lg:hidden shadow-lg border-6 md:border-9 border-white rounded-3xl overflow-hidden">
+              <PrismicNextImage
+                field={slice.primary.image}
+                width={slice.primary.image.dimensions?.width}
+                height={slice.primary.image.dimensions?.height}
+                placeholder="blur"
+                blurDataURL={getBlurSvg}
+                className="rounded-lg"
+              />
+            </div>
           </motion.div>
 
           {/* Image */}
           <motion.div
-            className="hidden lg:flex"
+            className="hidden lg:flex shadow-lg border-6 md:border-9 border-white rounded-3xl overflow-hidden"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
