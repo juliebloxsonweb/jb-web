@@ -221,7 +221,10 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type ResearchDocumentDataSlicesSlice = ResearchHeroBlockSlice;
+type ResearchDocumentDataSlicesSlice =
+  | TextImageBlockSlice
+  | ImageTextBlockSlice
+  | ResearchHeroBlockSlice;
 
 /**
  * Content for Research documents
@@ -1464,6 +1467,71 @@ export type ImageSliderSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ImageTextBlock → Default → Primary*
+ */
+export interface ImageTextBlockSliceDefaultPrimary {
+  /**
+   * image field in *ImageTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * title field in *ImageTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * content field in *ImageTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ImageTextBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageTextBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageTextBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageTextBlock*
+ */
+type ImageTextBlockSliceVariation = ImageTextBlockSliceDefault;
+
+/**
+ * ImageTextBlock Shared Slice
+ *
+ * - **API ID**: `image_text_block`
+ * - **Description**: ImageTextBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageTextBlockSlice = prismic.SharedSlice<
+  "image_text_block",
+  ImageTextBlockSliceVariation
+>;
+
+/**
  * Item in *ItemsBlock → Default → Primary → publications*
  */
 export interface ItemsBlockSliceDefaultPrimaryPublicationsItem {
@@ -2169,6 +2237,71 @@ export type TeachingHeroBlockSlice = prismic.SharedSlice<
   TeachingHeroBlockSliceVariation
 >;
 
+/**
+ * Primary content in *TextImageBlock → Default → Primary*
+ */
+export interface TextImageBlockSliceDefaultPrimary {
+  /**
+   * title field in *TextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * content field in *TextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_block.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+
+  /**
+   * image field in *TextImageBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TextImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextImageBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TextImageBlock*
+ */
+type TextImageBlockSliceVariation = TextImageBlockSliceDefault;
+
+/**
+ * TextImageBlock Shared Slice
+ *
+ * - **API ID**: `text_image_block`
+ * - **Description**: TextImageBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageBlockSlice = prismic.SharedSlice<
+  "text_image_block",
+  TextImageBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -2260,6 +2393,10 @@ declare module "@prismicio/client" {
       ImageSliderSliceDefaultPrimary,
       ImageSliderSliceVariation,
       ImageSliderSliceDefault,
+      ImageTextBlockSlice,
+      ImageTextBlockSliceDefaultPrimary,
+      ImageTextBlockSliceVariation,
+      ImageTextBlockSliceDefault,
       ItemsBlockSlice,
       ItemsBlockSliceDefaultPrimaryPublicationsItem,
       ItemsBlockSliceDefaultPrimaryEventsItem,
@@ -2295,6 +2432,10 @@ declare module "@prismicio/client" {
       TeachingHeroBlockSliceDefaultPrimary,
       TeachingHeroBlockSliceVariation,
       TeachingHeroBlockSliceDefault,
+      TextImageBlockSlice,
+      TextImageBlockSliceDefaultPrimary,
+      TextImageBlockSliceVariation,
+      TextImageBlockSliceDefault,
     };
   }
 }

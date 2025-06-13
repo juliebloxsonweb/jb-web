@@ -1,4 +1,5 @@
 import { ContainerScroll } from "@/components/ContainerScroll";
+import { staticBlurDataUrl } from "@/utils/staticBlurUrl";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -14,11 +15,13 @@ export type ResearchHeroBlockProps =
  * Component for "ResearchHeroBlock" Slices.
  */
 const ResearchHeroBlock: FC<ResearchHeroBlockProps> = ({ slice }) => {
+    const getBlurSvg = staticBlurDataUrl();
+  
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-16"
+      className="pt-16"
     >
       <div className="container">
         <div className="flex flex-col overflow-hidden">
@@ -28,7 +31,9 @@ const ResearchHeroBlock: FC<ResearchHeroBlockProps> = ({ slice }) => {
                 <h1 className="text-center text-4xl font-bold lg:text-5xl xl:text-7xl">
                   {slice.primary.title}
                 </h1>
-                <p className="text-lg text-justify lg:text-center py-4">{slice.primary.content}</p>
+                <p className="text-lg text-justify lg:text-center py-4">
+                  {slice.primary.content}
+                </p>
               </>
             }
           >
@@ -38,8 +43,12 @@ const ResearchHeroBlock: FC<ResearchHeroBlockProps> = ({ slice }) => {
               width={slice.primary.image.dimensions?.width}
               className="mx-auto rounded-2xl size-full object-cover h-full object-left-top"
               draggable={false}
+              placeholder="blur"
+              blurDataURL={getBlurSvg}
             />
-            <p className="text-sm text-center pt-2">{slice.primary.image_caption}</p>
+            <p className="text-sm text-center pt-2">
+              {slice.primary.image_caption}
+            </p>
           </ContainerScroll>
         </div>
       </div>

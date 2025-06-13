@@ -14,6 +14,7 @@ export const components = {
   hero_block: dynamic(() => import("./HeroBlock")),
   home_hero_block: dynamic(() => import("./HomeHeroBlock")),
   image_slider: dynamic(() => import("./ImageSlider")),
+  image_text_block: dynamic(() => import("./ImageTextBlock")),
   items_block: dynamic(() => import("./ItemsBlock")),
   past_students_block: dynamic(() => import("./PastStudentsBlock")),
   research_hero_block: dynamic(() => import("./ResearchHeroBlock")),
@@ -21,4 +22,5 @@ export const components = {
   stats_block: dynamic(() => import("./StatsBlock")),
   student_hero_block: dynamic(() => import("./StudentHeroBlock")),
   teaching_hero_block: dynamic(() => import("./TeachingHeroBlock")),
+  text_image_block: dynamic(() => import("./TextImageBlock")),
 };

@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "text_image_block": {
+              "type": "SharedSlice"
+            },
+            "image_text_block": {
+              "type": "SharedSlice"
+            },
             "research_hero_block": {
               "type": "SharedSlice"
             }
