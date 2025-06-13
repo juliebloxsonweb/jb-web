@@ -48,7 +48,8 @@ const HomeHeroBlock: FC<HomeHeroBlockProps> = ({ slice }) => {
                 <motion.span
                   key={index}
                   initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                  viewport={{ once: true }}
                   transition={{
                     duration: 0.3,
                     delay: index * 0.1,
@@ -64,12 +65,13 @@ const HomeHeroBlock: FC<HomeHeroBlockProps> = ({ slice }) => {
               initial={{
                 opacity: 0,
               }}
-              animate={{
+              whileInView={{
                 opacity: 1,
               }}
+              viewport={{ once: true }}
               transition={{
                 duration: 0.3,
-                delay: 0.8,
+                delay: 0.5,
               }}
               className="relative z-10 mx-auto max-w-2xl py-4 text-center text-lg"
             >
@@ -79,12 +81,13 @@ const HomeHeroBlock: FC<HomeHeroBlockProps> = ({ slice }) => {
               initial={{
                 opacity: 0,
               }}
-              animate={{
+              whileInView={{
                 opacity: 1,
               }}
+              viewport={{ once: true }}
               transition={{
                 duration: 0.3,
-                delay: 1,
+                delay: 0.6,
               }}
               className="relative z-10 mt-8 flex flex-wrap items-center justify-center"
             >
@@ -102,13 +105,14 @@ const HomeHeroBlock: FC<HomeHeroBlockProps> = ({ slice }) => {
                     opacity: 0,
                     y: 10,
                   }}
-                  animate={{
+                  whileInView={{
                     opacity: 1,
                     y: 0,
                   }}
+                  viewport={{ once: true }}
                   transition={{
                     duration: 0.3,
-                    delay: 1.2,
+                    delay: 0.7,
                   }}
                   className="relative z-10 mt-20 rounded-3xl border border-white bg-white p-4 shadow-md w-[fit-content] h-[fit-content]"
                 >
