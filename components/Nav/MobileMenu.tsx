@@ -13,7 +13,6 @@ const navItems: NavItem[] = [
   { label: "ETCR", path: "/etcr" },
   { label: "Students", path: "/students" },
   { label: "Teaching", path: "/teaching" },
-  { label: "Contact", path: "/contact" },
 ];
 
 const containerVariants = {
